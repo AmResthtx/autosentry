@@ -55,7 +55,7 @@ public class OBDWorker extends Worker {
                 log.timestamp = System.currentTimeMillis();
                 log.type = "RPM_INSTABILITY";
                 log.message = "Detected RPM instability (swing over threshold).";
-                log.metadata = "{" + "samples_count:" + samples.size() + "}" ;
+                log.metadata = "{\"samples_count\":" + samples.size() + "}" ;
                 AgentLogDao logDao = db.agentLogDao();
                 logDao.insert(log);
 
