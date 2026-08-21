@@ -2,7 +2,6 @@ package com.autosentry.app.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,28 +15,34 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private TextView rpmView;
-    private Button pidEditorBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rpmView = findViewById(R.id.textView);
-        pidEditorBtn = findViewById(R.id.button_pid_editor);
+        rpmView = findViewById(R.id.rpm_value);
 
-        pidEditorBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, PIDEditorActivity.class));
-            }
-        });
+        Button alertsBtn = findViewById(R.id.button_alerts);
+        alertsBtn.setOnClickListener(v ->
+                startActivity(new Intent(this, AlertsActivity.class)));
 
+        Button maintBtn = findViewById(R.id.button_maintenance);
+        maintBtn.setOnClickListener(v ->
+                startActivity(new Intent(this, MaintenanceActivity.class)));
+
+        Button pidBtn = findViewById(R.id.button_pid_editor);
+        pidBtn.setOnClickListener(v ->
+                startActivity(new Intent(this, PIDEditorActivity.class)));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         refreshLatestRPM();
     }
 
     private void refreshLatestRPM() {
-        // Load latest RPM sample from DB (performed on background thread in real code; simplified here)
         new Thread(() -> {
             AppDatabase db = AppDatabase.getInstance(getApplicationContext());
             List<PIDRecord> latest = db.pidRecordDao().latest(1);
