@@ -30,8 +30,19 @@ public abstract class AppDatabase extends RoomDatabase {
                                     context.getApplicationContext(),
                                     AppDatabase.class,
                                     DB_NAME)
-                            .fallbackToDestructiveMigration()
-                            .build();
+                            .allowMainThreadQueries()  // For simplicity; production should use background threads / coroutines
+                                                        .addMigrations(
+                                                            // Add future schema migrations here instead of destructive fallback
+                                                            new androidx.room.migration.Migration(3, 4) {
+                                                                @Override
+                                                                public void migrate(@NonNull androidx.sqlite.db.SupportSQLiteDatabase database) {
+                                                                    // Schema v3 -> v4 migration placeholder
+                                                                    // Example: add new column if needed
+                                                                    // database.execSQL("ALTER TABLE sessions ADD COLUMN export_path TEXT DEFAULT NULL");
+                                                                }
+                                                            }
+                                                        )
+                                                        .build();
                 }
             }
         }

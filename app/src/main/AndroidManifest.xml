@@ -13,6 +13,7 @@
 
     <!-- Foreground service for long OBD sessions -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
 
     <!-- Internet for future cloud sync / parts lookup -->
     <uses-permission android:name="android.permission.INTERNET" />
