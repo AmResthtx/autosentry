@@ -9,7 +9,9 @@ public class MaintenanceEvent {
     public long id;
 
     public String title; // e.g., "Oil change"
-    public long lastServiceAt; // epoch ms (date of last service)
+    public String eventType; // e.g., "OIL_CHANGE"
+    public long eventTime; // epoch ms (date of service)
+    public long lastServiceAt; // epoch ms (last service time, same as eventTime)
     public long nextServiceAt; // epoch ms (optional)
     public int intervalKm; // 0 if not distance-based
     public int intervalMonths; // 0 if not time-based

@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
-    private void refreshUI() {
+    public void refreshUI() {
         refreshLatestRPM();
         new Thread(() -> {
             AppDatabase db = AppDatabase.getInstance(getApplicationContext());

@@ -13,4 +13,7 @@ public interface AgentLogDao {
 
     @Query("SELECT * FROM agent_logs ORDER BY timestamp DESC LIMIT :limit")
     List<AgentLog> latest(int limit);
+
+    @Query("SELECT * FROM agent_logs ORDER BY timestamp DESC LIMIT :limit")
+    List<AgentLog> getLatest(int limit);
 }

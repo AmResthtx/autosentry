@@ -20,4 +20,7 @@ import java.util.List;
 
     @Query("SELECT * FROM sessions WHERE id = :id")
         Session getById(long id);
+
+    @Query("SELECT * FROM sessions ORDER BY startTime DESC")
+        List<Session> getAll();
   }

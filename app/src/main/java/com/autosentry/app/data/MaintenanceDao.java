@@ -21,4 +21,7 @@ public interface MaintenanceDao {
 
     @Query("SELECT * FROM maintenance_events ORDER BY nextServiceAt ASC")
     List<MaintenanceEvent> dueSoon();
+
+    @Query("SELECT * FROM maintenance_events WHERE eventType = :eventType ORDER BY eventTime DESC LIMIT 1")
+    List<MaintenanceEvent> getLatestByType(String eventType);
 }

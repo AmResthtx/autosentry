@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "com.autosentry.app-release-35:/mipmap-xhdpi_ic_launcher.xml.flat",
+        "source": "com.autosentry.app-main-36:/mipmap-xhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/layout_activity_main.xml.flat",
+        "source": "com.autosentry.app-main-36:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/layout_activity_alerts.xml.flat",
+        "source": "com.autosentry.app-main-36:/layout/activity_alerts.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/layout_activity_maintenance.xml.flat",
+        "source": "com.autosentry.app-main-36:/layout/activity_maintenance.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/layout_dialog_add_maintenance.xml.flat",
+        "source": "com.autosentry.app-main-36:/layout/dialog_add_maintenance.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/mipmap-hdpi_ic_launcher_round.xml.flat",
+        "source": "com.autosentry.app-main-36:/mipmap-hdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/mipmap-xxxhdpi_ic_launcher_round.xml.flat",
+        "source": "com.autosentry.app-main-36:/mipmap-xxxhdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/layout_activity_pid_editor.xml.flat",
+        "source": "com.autosentry.app-main-36:/layout/activity_pid_editor.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/mipmap-xxxhdpi_ic_launcher.xml.flat",
+        "source": "com.autosentry.app-main-36:/mipmap-xxxhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/mipmap-xhdpi_ic_launcher_round.xml.flat",
+        "source": "com.autosentry.app-main-36:/mipmap-xhdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/mipmap-mdpi_ic_launcher_round.xml.flat",
+        "source": "com.autosentry.app-main-36:/mipmap-mdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/mipmap-mdpi_ic_launcher.xml.flat",
+        "source": "com.autosentry.app-main-36:/mipmap-mdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/mipmap-xxhdpi_ic_launcher.xml.flat",
+        "source": "com.autosentry.app-main-36:/mipmap-xxhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/mipmap-xxhdpi_ic_launcher_round.xml.flat",
+        "source": "com.autosentry.app-main-36:/mipmap-xxhdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.autosentry.app-release-35:/mipmap-hdpi_ic_launcher.xml.flat",
+        "source": "com.autosentry.app-main-36:/mipmap-hdpi/ic_launcher.xml"
+    }
+]

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <!-- Header: current RPM display -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RPM: --"
+        android:textSize="32sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <!-- Secondary data: Coolant temp -->
+    <TextView
+        android:id="@+id/coolant_temp_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coolant: -- °C"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Trip session info -->
+    <TextView
+        android:id="@+id/session_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No active trip"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@+id/coolant_temp_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp" />
+
+    <!-- Start/End Trip buttons -->
+    <Button
+        android:id="@+id/button_start_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Trip"
+        android:backgroundTint="#00C853"
+        app:layout_constraintTop_toBottomOf="@+id/session_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_end_trip"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp" />
+
+    <Button
+        android:id="@+id/button_end_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End Trip"
+        android:enabled="false"
+        android:backgroundTint="#BDBDBD"
+        app:layout_constraintTop_toBottomOf="@+id/session_text"
+        app:layout_constraintStart_toEndOf="@+id/button_start_trip"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp" />
+
+    <!-- Export trip data -->
+    <Button
+        android:id="@+id/button_export_trips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Export Trips (CSV)"
+        app:layout_constraintTop_toBottomOf="@+id/button_start_trip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Navigation buttons -->
+    <Button
+        android:id="@+id/button_pid_editor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit PIDs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_alerts"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="8dp" />
+
+    <Button
+        android:id="@+id/button_alerts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alerts"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_pid_editor"
+        app:layout_constraintEnd_toStartOf="@+id/button_maintenance"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/button_maintenance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Maintenance"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_alerts"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="8dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

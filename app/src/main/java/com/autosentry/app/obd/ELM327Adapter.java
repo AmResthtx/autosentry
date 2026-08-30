@@ -26,7 +26,7 @@ public class ELM327Adapter {
 
     public ELM327Adapter() {}
 
-    public boolean connect(String adapterAddress) throws IOException {
+    public boolean connect() throws IOException, InterruptedException {
         if (connected) disconnect();
         this.adapterAddress = adapterAddress;
 
@@ -103,14 +103,14 @@ public class ELM327Adapter {
         return value;
     }
 
-    private void sendCommand(String cmd) throws IOException {
+    public void sendCommand(String cmd) throws IOException {
         if (outputStream == null) throw new IOException("Not connected to adapter");
         String fullCmd = cmd + "\r";
         outputStream.write(fullCmd.getBytes());
         outputStream.flush();
     }
 
-    private String readResponse() throws IOException {
+    public String readResponse() throws IOException {
         if (inputStream == null) throw new IOException("Not connected");
         StringBuilder response = new StringBuilder();
         byte[] buffer = new byte[1024];
