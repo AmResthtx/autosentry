@@ -17,12 +17,20 @@ jobs:
         with:
           java-version: 17
           distribution: temurin
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          api-level: 35
+          ndk-version: r27c
+          cmdline-tools-version: latest
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
         with:
           gradle-version: 9.0.0
       - name: Build APK (Release)
         run: ./gradlew :app:assembleRelease --stacktrace --info
+        env:
+          ANDROID_HOME: ${{ env.ANDROID_HOME }}
       - name: Build APK (Debug)
         run: ./gradlew :app:assembleDebug --stacktrace --info
       - name: Verify APK exists
