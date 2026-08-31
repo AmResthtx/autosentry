@@ -3,7 +3,6 @@ package com.autosentry.app.data;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.annotation.NonNull;
 import android.content.Context;
 
 @Database(entities = {
@@ -12,7 +11,7 @@ import android.content.Context;
         PIDDefinition.class,
         AgentLog.class,
         MaintenanceEvent.class
-}, version = 3, exportSchema = false)
+}, version = 5, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DB_NAME = "autosentry.db";
     private static volatile AppDatabase INSTANCE;
@@ -31,19 +30,9 @@ public abstract class AppDatabase extends RoomDatabase {
                                     context.getApplicationContext(),
                                     AppDatabase.class,
                                     DB_NAME)
-                            .allowMainThreadQueries()  // For simplicity; production should use background threads / coroutines
-                                                        .addMigrations(
-                                                            // Add future schema migrations here instead of destructive fallback
-                                                            new androidx.room.migration.Migration(3, 4) {
-                                                                @Override
-                                                                public void migrate(@NonNull androidx.sqlite.db.SupportSQLiteDatabase database) {
-                                                                    // Schema v3 -> v4 migration placeholder
-                                                                    // Example: add new column if needed
-                                                                    // database.execSQL("ALTER TABLE sessions ADD COLUMN export_path TEXT DEFAULT NULL");
-                                                                }
-                                                            }
-                                                        )
-                                                        .build();
+                            .allowMainThreadQueries()
+                            .fallbackToDestructiveMigration()
+                            .build();
                 }
             }
         }

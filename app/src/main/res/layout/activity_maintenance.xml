@@ -1,29 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="#0F172A"
+    android:padding="12dp">
 
-    <TextView
+    <!-- Top CarFax-Style & Depreciation Resale Valuation Card -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Maintenance Tracker"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="12dp" />
+        android:orientation="vertical"
+        android:background="@drawable/bg_truck_card"
+        android:padding="12dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vehicle Service Dossier &amp; Truck Valuation"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#F8FAFC" />
+
+                <TextView
+                    android:id="@+id/carfax_truck_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2002 Ford F-350 7.3L Turbo Diesel • 164,250 Miles"
+                    android:textSize="11sp"
+                    android:textColor="#38BDF8"
+                    android:layout_marginTop="2dp" />
+
+                <TextView
+                    android:id="@+id/carfax_health_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Verified Service Records • Digital Receipt Storage"
+                    android:textSize="11sp"
+                    android:textColor="#4ADE80"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_restore_oem_intervals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reload OEM"
+                android:textSize="11sp"
+                android:backgroundTint="#334155" />
+        </LinearLayout>
+
+        <!-- Depreciation Protection & Resale Valuation Banner -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#090D16"
+            android:padding="10dp"
+            android:layout_marginTop="8dp"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/val_base_market"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$17,500"
+                    android:textColor="#94A3B8"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Base Market"
+                    android:textColor="#64748B"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/val_upgrades_added"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+$5,350"
+                    android:textColor="#38BDF8"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upgrades Added"
+                    android:textColor="#64748B"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/val_resale_appraised"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$24,850"
+                    android:textColor="#4ADE80"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Appraised Resale"
+                    android:textColor="#64748B"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Top Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btn_add_custom_service"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="+ Log Service / Upgrade"
+                android:textSize="11sp"
+                android:backgroundTint="#0284C7"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btn_export_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Export Buyer Dossier"
+                android:textSize="11sp"
+                android:backgroundTint="#059669"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Filter Tabs: All, OEM Maintenance, Installed Upgrades -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp">
+
+        <Button
+            android:id="@+id/tab_filter_all"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="All (18)"
+            android:textSize="11sp"
+            android:backgroundTint="#0284C7"
+            android:layout_marginEnd="2dp" />
+
+        <Button
+            android:id="@+id/tab_filter_oem"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1.1"
+            android:text="OEM Service (12)"
+            android:textSize="11sp"
+            android:backgroundTint="#334155"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp" />
+
+        <Button
+            android:id="@+id/tab_filter_upgrades"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1.1"
+            android:text="Upgrades &amp; Mods (6)"
+            android:textSize="11sp"
+            android:backgroundTint="#334155"
+            android:layout_marginStart="2dp" />
+    </LinearLayout>
+
+    <!-- Filter / Quick Search Bar -->
+    <EditText
+        android:id="@+id/edit_search_maint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search item, upgrade, brand, date, or shop..."
+        android:textColor="#F8FAFC"
+        android:textColorHint="#64748B"
+        android:background="#1E293B"
+        android:padding="10dp"
+        android:textSize="13sp"
+        android:layout_marginBottom="6dp" />
+
+    <!-- Maintenance Items List -->
     <ListView
         android:id="@+id/maintenance_list_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:divider="#334155"
+        android:dividerHeight="6dp" />
 
+    <!-- Hidden / Template add button for backwards compatibility -->
     <Button
         android:id="@+id/btn_add_maintenance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Maintenance Item"
-        android:layout_marginTop="8dp" />
+        android:visibility="gone" />
 
 </LinearLayout>

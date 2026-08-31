@@ -16,4 +16,10 @@ public interface AgentLogDao {
 
     @Query("SELECT * FROM agent_logs ORDER BY timestamp DESC LIMIT :limit")
     List<AgentLog> getLatest(int limit);
+
+    @Query("SELECT * FROM agent_logs WHERE type = :type ORDER BY timestamp DESC")
+    List<AgentLog> getByType(String type);
+
+    @Query("DELETE FROM agent_logs")
+    void clearAll();
 }

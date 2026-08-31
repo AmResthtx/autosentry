@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0F172A"
+    android:padding="12dp">
+
+    <!-- Header & Back / Search -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AI Parts Hunter &amp; Deals"
+            android:textColor="#F8FAFC"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/partner_badge_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PARTNER DISCOUNTS ACTIVE"
+            android:textColor="#4ADE80"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:background="#064E3B" />
+    </LinearLayout>
+
+    <!-- Value Proposition / Quality Guarantee Banner -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_cluster_card"
+        android:padding="10dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TIER 1 QUALITY COMMITMENT &amp; PARTNER SAVINGS"
+            android:textColor="#38BDF8"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AutoSentry negotiates directly with vetted diesel specialty suppliers (Riffraff, RockAuto, DPP) to provide verified OEM components at exclusive prices."
+            android:textColor="#94A3B8"
+            android:textSize="11sp"
+            android:layout_marginTop="2dp" />
+    </LinearLayout>
+
+    <!-- Search Input & AI Hunter Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <EditText
+            android:id="@+id/edit_search_parts"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:hint="Search parts (e.g. Motorcraft FL-1995, Fuel Filter, CPS)..."
+            android:textColor="#F8FAFC"
+            android:textColorHint="#64748B"
+            android:textSize="12sp"
+            android:background="@drawable/bg_cluster_card"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btn_ai_search_parts"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="AI Search"
+            android:textSize="11sp"
+            android:backgroundTint="#0284C7"
+            android:layout_marginStart="6dp" />
+    </LinearLayout>
+
+    <!-- Category Chips -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/chip_all_parts"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="All Parts"
+                android:textSize="10sp"
+                android:backgroundTint="#0284C7"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/chip_oil_filters"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="Oil &amp; Filters"
+                android:textSize="10sp"
+                android:backgroundTint="#334155"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/chip_fuel_system"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="Fuel System"
+                android:textSize="10sp"
+                android:backgroundTint="#334155"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/chip_transmission"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="Transmission"
+                android:textSize="10sp"
+                android:backgroundTint="#334155"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/chip_sensors"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="Sensors / CPS"
+                android:textSize="10sp"
+                android:backgroundTint="#334155" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- AI Diagnostic / Search Result Callout -->
+    <LinearLayout
+        android:id="@+id/ai_advisor_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#1E1B4B"
+        android:padding="10dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚡ GEMINI AI PARTS ADVISOR ANALYSIS"
+            android:textColor="#A5B4FC"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ai_advisor_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Searching partner networks for best pricing..."
+            android:textColor="#F1F5F9"
+            android:textSize="11sp"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+    <!-- Deals ListView -->
+    <ListView
+        android:id="@+id/parts_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+
+</LinearLayout>

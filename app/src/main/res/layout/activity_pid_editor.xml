@@ -1,32 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="#0F172A"
+    android:padding="12dp">
 
+    <!-- Identified Vehicle Banner -->
+    <LinearLayout
+        android:id="@+id/pid_vehicle_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:background="@drawable/bg_truck_card">
+
+        <TextView
+            android:id="@+id/pid_vehicle_symbol"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:text="🛻"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginEnd="8dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pid_vehicle_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Connected: 2002 Ford F-350 7.3L PowerStroke"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#F8FAFC" />
+
+            <TextView
+                android:id="@+id/pid_vehicle_protocol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Protocol: SAE J1850 PWM • Filtering to Applicable PIDs"
+                android:textSize="11sp"
+                android:textColor="#38BDF8" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_toggle_applicable_only"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Applicable Only"
+            android:textSize="10sp"
+            android:backgroundTint="#0284C7" />
+    </LinearLayout>
+
+    <!-- Search Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="6dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/edit_search_pid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="🔍 Search PIDs (e.g. ICP, EOT, Boost, Duty Cycle)..."
+            android:textColor="#F8FAFC"
+            android:textColorHint="#64748B"
+            android:background="#1E293B"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:completionThreshold="1"
+            android:popupBackground="#1E293B"
+            android:dropDownSelector="#334155" />
+
+        <Button
+            android:id="@+id/btn_reset_pids"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reload"
+            android:textSize="11sp"
+            android:backgroundTint="#334155"
+            android:layout_marginStart="6dp" />
+    </LinearLayout>
+
+    <!-- PID Count and Status Indicator -->
+    <TextView
+        android:id="@+id/pid_count_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Showing 28 Applicable PIDs for Connected Vehicle"
+        android:textSize="11sp"
+        android:textColor="#94A3B8"
+        android:layout_marginBottom="6dp" />
+
+    <!-- List of PIDs -->
     <ListView
         android:id="@+id/pid_list_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:divider="#334155"
+        android:dividerHeight="1dp" />
 
-    <EditText
-        android:id="@+id/edit_name"
+    <!-- Add Custom PID Card -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="PID name (e.g., RPM)" />
+        android:orientation="vertical"
+        android:background="@drawable/bg_cluster_card"
+        android:padding="10dp"
+        android:layout_marginTop="8dp">
 
-    <EditText
-        android:id="@+id/edit_command"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Command (e.g., 010C)" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="➕ Add Custom PID / Mode 22 Parameter"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#94A3B8" />
 
-    <Button
-        android:id="@+id/btn_add_pid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add PID" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Name (e.g. MAP_PSI)"
+                android:textColor="#F8FAFC"
+                android:textColorHint="#64748B"
+                android:textSize="12sp"
+                android:padding="8dp"
+                android:completionThreshold="1"
+                android:popupBackground="#1E293B"
+                android:background="#0F172A"
+                android:layout_marginEnd="4dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_command"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Hex (e.g. 221440)"
+                android:textColor="#F8FAFC"
+                android:textColorHint="#64748B"
+                android:textSize="12sp"
+                android:padding="8dp"
+                android:completionThreshold="1"
+                android:popupBackground="#1E293B"
+                android:background="#0F172A"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_add_pid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+ Add Custom Parameter"
+            android:backgroundTint="#0284C7"
+            android:layout_marginTop="6dp" />
+    </LinearLayout>
 
 </LinearLayout>

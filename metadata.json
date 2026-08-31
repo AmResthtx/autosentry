@@ -1,0 +1,6 @@
+{
+  "name": "AutoSentry",
+  "description": "OBD-II vehicle diagnostics, trip logging, and maintenance tracker",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

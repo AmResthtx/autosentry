@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0F172A"
+    android:padding="12dp">
+
+    <!-- Top Action Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Trip Database &amp; Analytics"
+            android:textColor="#F8FAFC"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_export_trips_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Export CSV"
+            android:textSize="11sp"
+            android:backgroundTint="#0284C7"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btn_add_trip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+ Log Trip"
+            android:textSize="11sp"
+            android:backgroundTint="#22C55E" />
+    </LinearLayout>
+
+    <!-- Cumulative Fleet / Truck Trip Statistics Dashboard -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_cluster_card"
+        android:padding="12dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="POWERTRAIN &amp; TRIP LIFETIME METRICS"
+            android:textColor="#94A3B8"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TOTAL MILES"
+                    android:textColor="#64748B"
+                    android:textSize="9sp" />
+                <TextView
+                    android:id="@+id/stat_total_miles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="158,420 mi"
+                    android:textColor="#38BDF8"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FLEET MPG"
+                    android:textColor="#64748B"
+                    android:textSize="9sp" />
+                <TextView
+                    android:id="@+id/stat_avg_mpg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15.8 MPG"
+                    android:textColor="#4ADE80"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DIESEL USED"
+                    android:textColor="#64748B"
+                    android:textSize="9sp" />
+                <TextView
+                    android:id="@+id/stat_fuel_used"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="84.2 gal"
+                    android:textColor="#CBD5E1"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TOTAL RUNS"
+                    android:textColor="#64748B"
+                    android:textSize="9sp" />
+                <TextView
+                    android:id="@+id/stat_total_trips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12 Trips"
+                    android:textColor="#F59E0B"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Search & Filter Category Tabs -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="6dp">
+
+        <EditText
+            android:id="@+id/edit_search_trips"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:hint="Search trips, notes, routes..."
+            android:textColorHint="#64748B"
+            android:textColor="#F8FAFC"
+            android:textSize="12sp"
+            android:background="@drawable/bg_cluster_card"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <!-- Filter Buttons -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tab_trips_all"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="All Trips"
+                android:textSize="11sp"
+                android:backgroundTint="#0284C7"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/tab_trips_towing"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Heavy Towing"
+                android:textSize="11sp"
+                android:backgroundTint="#334155"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/tab_trips_highway"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Highway Hauls"
+                android:textSize="11sp"
+                android:backgroundTint="#334155"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/tab_trips_commute"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Daily Commute"
+                android:textSize="11sp"
+                android:backgroundTint="#334155" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Empty State -->
+    <TextView
+        android:id="@+id/trips_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No trips recorded yet. Trips are automatically captured when the engine runs or via the '+ Log Trip' button."
+        android:textColor="#94A3B8"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:padding="20dp"
+        android:visibility="gone" />
+
+    <!-- Trips List -->
+    <ListView
+        android:id="@+id/trips_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+
+</LinearLayout>

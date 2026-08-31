@@ -1,116 +1,600 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#0F172A"
     tools:context=".ui.MainActivity">
 
-    <!-- Header: current RPM display -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="RPM: --"
-        android:textSize="32sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:padding="16dp">
 
-    <!-- Secondary data: Coolant temp -->
-    <TextView
-        android:id="@+id/coolant_temp_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Coolant: -- °C"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        <!-- Vehicle Connection Header Card -->
+        <LinearLayout
+            android:id="@+id/truck_header_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_truck_card"
+            android:padding="14dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Trip session info -->
-    <TextView
-        android:id="@+id/session_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No active trip"
-        android:textSize="14sp"
-        android:textColor="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@+id/coolant_temp_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-    <!-- Start/End Trip buttons -->
-    <Button
-        android:id="@+id/button_start_trip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Trip"
-        android:backgroundTint="#00C853"
-        app:layout_constraintTop_toBottomOf="@+id/session_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_end_trip"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp" />
+                <TextView
+                    android:id="@+id/truck_symbol_icon"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:text="🛻"
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    android:background="#0F172A"
+                    android:layout_marginEnd="10dp" />
 
-    <Button
-        android:id="@+id/button_end_trip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="End Trip"
-        android:enabled="false"
-        android:backgroundTint="#BDBDBD"
-        app:layout_constraintTop_toBottomOf="@+id/session_text"
-        app:layout_constraintStart_toEndOf="@+id/button_start_trip"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="8dp" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-    <!-- Export trip data -->
-    <Button
-        android:id="@+id/button_export_trips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Export Trips (CSV)"
-        app:layout_constraintTop_toBottomOf="@+id/button_start_trip"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+                    <TextView
+                        android:id="@+id/truck_model_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2002 Ford F-350 Super Duty 7.3L PowerStroke Diesel"
+                        android:textColor="#F8FAFC"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
 
-    <!-- Navigation buttons -->
-    <Button
-        android:id="@+id/button_pid_editor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit PIDs"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_alerts"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="8dp" />
+                    <TextView
+                        android:id="@+id/truck_conn_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="● CONNECTED TO OBDLink EX (ISO 9141-2 / PWM)"
+                        android:textColor="#4ADE80"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="2dp" />
 
-    <Button
-        android:id="@+id/button_alerts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Alerts"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_pid_editor"
-        app:layout_constraintEnd_toStartOf="@+id/button_maintenance"
-        android:layout_marginBottom="24dp" />
+                    <TextView
+                        android:id="@+id/vin_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="VIN: 1FTNW21F82EB74901 • Status: Engine Running"
+                        android:textColor="#94A3B8"
+                        android:textSize="10sp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
 
-    <Button
-        android:id="@+id/button_maintenance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Maintenance"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_alerts"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="8dp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="end">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    <Button
+                        android:id="@+id/btn_engine_toggle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Engine: RUN"
+                        android:textSize="10sp"
+                        android:padding="0dp"
+                        android:backgroundTint="#22C55E" />
+
+                    <Button
+                        android:id="@+id/btn_switch_vehicle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:text="🔄 Connect / VIN"
+                        android:textSize="9sp"
+                        android:padding="0dp"
+                        android:layout_marginTop="4dp"
+                        android:backgroundTint="#0284C7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Primary Cluster: RPM Gauge & Speed -->
+        <LinearLayout
+            android:id="@+id/gauge_cluster_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_cluster_card"
+            android:padding="16dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/truck_header_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/tachometer_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏱️ DIESEL TACHOMETER"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+
+            <!-- Main RPM Reading -->
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RPM: 2,150"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:textColor="#38BDF8"
+                android:layout_marginTop="2dp" />
+
+            <ProgressBar
+                android:id="@+id/truck_rpm_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:max="4000"
+                android:progress="2150"
+                android:progressTint="#38BDF8"
+                android:layout_marginTop="8dp" />
+
+            <!-- Secondary Metrics Row 1: Speed, Boost PSI, EOT Oil Temp -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/gauge_speed_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="54 mph"
+                        android:textColor="#F8FAFC"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/gauge_speed_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🚗 Road Speed"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/gauge_boost_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="14.2 PSI"
+                        android:textColor="#F59E0B"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/gauge_boost_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌀 Turbo Boost"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/gauge_eot_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="198 °F"
+                        android:textColor="#EF4444"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/gauge_eot_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🛢️ Oil Temp (EOT)"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Secondary Metrics Row 2: Coolant (ECT), ICP High-Pressure Oil, Trans Temp -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/coolant_temp_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Coolant: 192 °F"
+                        android:textColor="#34D399"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/gauge_coolant_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌡️ Coolant (ECT)"
+                        android:textColor="#94A3B8"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/gauge_icp_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1,850 PSI"
+                        android:textColor="#60A5FA"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/gauge_icp_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚡ ICP Pressure"
+                        android:textColor="#94A3B8"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/gauge_trans_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="165 °F"
+                        android:textColor="#A78BFA"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/gauge_trans_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚙️ Trans Temp"
+                        android:textColor="#94A3B8"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Throttle Simulation Controller -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="14dp"
+                android:padding="8dp"
+                android:background="#090D16">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Accelerator Pedal Position (Drive Simulator):"
+                        android:textColor="#CBD5E1"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/pedal_pct_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="42%"
+                        android:textColor="#38BDF8"
+                        android:textStyle="bold"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/throttle_seekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="42"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- AI PID Live Monitoring Status Banner -->
+        <LinearLayout
+            android:id="@+id/ai_pid_monitor_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_cluster_card"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/gauge_cluster_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/ai_monitor_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AI SENTRY PID SENTINEL: ACTIVE"
+                    android:textColor="#38BDF8"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ai_monitor_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Monitoring Oil Cooler Delta, HPOP/IPR Duty, ICP, Boost &amp; Trans Temp"
+                    android:textColor="#94A3B8"
+                    android:textSize="10sp"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/ai_monitor_health_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✓ ALL PIDS NOMINAL"
+                android:textColor="#4ADE80"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:background="#064E3B" />
+        </LinearLayout>
+
+        <!-- Auto Trip Logger Card -->
+        <LinearLayout
+            android:id="@+id/trip_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_cluster_card"
+            android:padding="14dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/ai_pid_monitor_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/session_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Auto Trip Logger: ACTIVE • Trip #1"
+                        android:textColor="#F8FAFC"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/sample_rate_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Smart Auto-Log: Starts on ignition/RPM > 0, closes on engine stop"
+                        android:textColor="#38BDF8"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/trip_auto_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AUTO-LOGGING"
+                    android:textColor="#4ADE80"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:background="#064E3B" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/button_start_trip"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Force New Trip"
+                    android:textSize="11sp"
+                    android:backgroundTint="#0284C7"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/button_end_trip"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="End Active Trip"
+                    android:textSize="11sp"
+                    android:backgroundTint="#64748B"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Main Action Buttons Row 1: Trips Database & AI Parts Deals -->
+        <LinearLayout
+            android:id="@+id/action_row_primary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/trip_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Button
+                android:id="@+id/button_view_trips"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="📁 Trips Database"
+                android:textColor="#F8FAFC"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:backgroundTint="#0284C7"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/button_ai_parts"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="⚡ AI Parts Deals"
+                android:textColor="#F8FAFC"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:backgroundTint="#0D9488"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <!-- Quick Diagnostic & Crank No-Start Tool Button -->
+        <Button
+            android:id="@+id/button_crank_no_start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="⚡ 7.3L Crank No-Start Diagnostic Suite"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#F8FAFC"
+            android:backgroundTint="#B91C1C"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/action_row_primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Navigation buttons row -->
+        <LinearLayout
+            android:id="@+id/nav_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/button_crank_no_start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Button
+                android:id="@+id/button_pid_editor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="PIDs"
+                android:backgroundTint="#334155"
+                android:textSize="11sp"
+                android:layout_marginEnd="3dp" />
+
+            <Button
+                android:id="@+id/button_alerts"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="AI Alerts"
+                android:backgroundTint="#334155"
+                android:textSize="11sp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp" />
+
+            <Button
+                android:id="@+id/button_maintenance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Maintenance"
+                android:backgroundTint="#334155"
+                android:textSize="11sp"
+                android:layout_marginStart="3dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

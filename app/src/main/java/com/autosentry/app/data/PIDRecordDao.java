@@ -16,4 +16,7 @@ public interface PIDRecordDao {
 
     @Query("SELECT * FROM pid_records WHERE pidName = :name ORDER BY timestamp DESC LIMIT :limit")
     List<PIDRecord> latestByName(String name, int limit);
+
+    @Query("SELECT * FROM pid_records WHERE sessionId = :sessionId ORDER BY timestamp ASC")
+    List<PIDRecord> recordsForSession(long sessionId);
 }

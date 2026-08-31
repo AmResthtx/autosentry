@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F172A">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Top Header Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_truck_card"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7.3L PowerStroke Crank No-Start Diagnostician"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#F8FAFC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Automated HEUI Diagnostic Matrix • CPS, ICP, IPR, IDM &amp; Fuse #30"
+                        android:textSize="11sp"
+                        android:textColor="#38BDF8"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/diag_status_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DIAGNOSTIC ACTIVE"
+                    android:textColor="#F8FAFC"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:background="#B91C1C" />
+            </LinearLayout>
+
+            <!-- Overall Diagnosis Verdict Banner -->
+            <LinearLayout
+                android:id="@+id/verdict_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#1E293B"
+                android:padding="12dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/text_verdict_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ROOT CAUSE IDENTIFIED: CPS NO RPM SIGNAL"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#EF4444" />
+
+                <TextView
+                    android:id="@+id/text_verdict_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tachometer and PCM detect 0 RPM while cranking. The Camshaft Position Sensor (CPS) has failed or disconnected. Without RPM sync, the PCM will never trigger the IDM to pulse the fuel injectors."
+                    android:textSize="12sp"
+                    android:textColor="#E2E8F0"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:id="@+id/text_verdict_action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RECOMMENDED ACTION: Replace CPS with genuine Motorcraft (DU-87 / F7TZ-12K073-B). Inspect 10mm bolt and wiring harness behind water pump pulley."
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="#38BDF8"
+                    android:layout_marginTop="6dp" />
+            </LinearLayout>
+
+            <!-- Scenario Tester Selector Row -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test Failure Modes &amp; Live Scenarios:"
+                android:textColor="#94A3B8"
+                android:textSize="11sp"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spinner_scenario"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:background="#1E293B"
+                android:layout_marginTop="4dp" />
+
+            <!-- Test Action Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/btn_run_crank_test"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="▶ Run Cranking Test"
+                    android:textSize="11sp"
+                    android:backgroundTint="#0284C7"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/btn_buzz_test"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="⚡ IDM Injector Buzz Test"
+                    android:textSize="11sp"
+                    android:backgroundTint="#7C3AED"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Live Cranking Telemetry Matrix (The 5 Starting Pillars) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CRANKING PARAMETER MATRIX (7.3L HEUI REQUIREMENTS)"
+            android:textColor="#94A3B8"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="6dp" />
+
+        <!-- Pillar 1: Cranking RPM / CPS -->
+        <LinearLayout
+            android:id="@+id/row_rpm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_cluster_card"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1. Cranking RPM (Cam Position Sensor - CPS)"
+                    android:textColor="#F8FAFC"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/desc_rpm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Requirement: ≥ 100 - 150 RPM (Tachometer must wiggle)"
+                    android:textColor="#94A3B8"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/val_rpm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 RPM"
+                android:textColor="#EF4444"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:id="@+id/badge_rpm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FAIL (0 RPM)"
+                android:textColor="#EF4444"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="#7F1D1D" />
+        </LinearLayout>
+
+        <!-- Pillar 2: Injection Control Pressure (ICP) -->
+        <LinearLayout
+            android:id="@+id/row_icp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_cluster_card"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2. High Pressure Oil (ICP Pressure &amp; Voltage)"
+                    android:textColor="#F8FAFC"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/desc_icp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Requirement: Minimum 500 PSI (≥ 0.82 Volts) to command IDM"
+                    android:textColor="#94A3B8"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/val_icp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="280 PSI"
+                android:textColor="#EF4444"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:id="@+id/badge_icp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOW OIL PSI"
+                android:textColor="#EF4444"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="#7F1D1D" />
+        </LinearLayout>
+
+        <!-- Pillar 3: IPR Duty Cycle -->
+        <LinearLayout
+            android:id="@+id/row_ipr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_cluster_card"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3. Injection Pressure Regulator (IPR %)"
+                    android:textColor="#F8FAFC"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/desc_ipr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Requirement: 14% - 35% during crank (&gt;65% = leak / stuck)"
+                    android:textColor="#94A3B8"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/val_ipr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21.5%"
+                android:textColor="#4ADE80"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:id="@+id/badge_ipr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NORMAL"
+                android:textColor="#4ADE80"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="#064E3B" />
+        </LinearLayout>
+
+        <!-- Pillar 4: Cranking Battery Voltage -->
+        <LinearLayout
+            android:id="@+id/row_volts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_cluster_card"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4. Cranking System Voltage"
+                    android:textColor="#F8FAFC"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/desc_volts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Requirement: ≥ 10.5V (&lt;10.2V shuts off IDM 115V inverter)"
+                    android:textColor="#94A3B8"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/val_volts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11.4 V"
+                android:textColor="#4ADE80"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:id="@+id/badge_volts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OK (&gt;10.5V)"
+                android:textColor="#4ADE80"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="#064E3B" />
+        </LinearLayout>
+
+        <!-- Pillar 5: Wait-to-Start & Fuse #30 (Fuel Heater Trap) -->
+        <LinearLayout
+            android:id="@+id/row_fuse30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_cluster_card"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5. WTS Light &amp; Fuse #30 (PCM Relay Circuit)"
+                    android:textColor="#F8FAFC"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/desc_fuse30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wait to Start light turns on / Fuel bowl heater intact"
+                    android:textColor="#94A3B8"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/val_fuse30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WTS ON"
+                android:textColor="#4ADE80"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:id="@+id/badge_fuse30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PCM POWERED"
+                android:textColor="#4ADE80"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="#064E3B" />
+        </LinearLayout>
+
+        <!-- Pillar 6: Fuel Delivery & Tailpipe Smoke -->
+        <LinearLayout
+            android:id="@+id/row_fuel_smoke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_cluster_card"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6. Fuel Delivery &amp; Exhaust Smoke Analysis"
+                    android:textColor="#F8FAFC"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/desc_fuel_smoke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="White smoke = fuel present, no heat/GPR. No smoke = No fuel / No IDM pulse."
+                    android:textColor="#94A3B8"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/val_fuel_smoke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="58 PSI • No Smoke"
+                android:textColor="#38BDF8"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="6dp" />
+        </LinearLayout>
+
+        <!-- Injector Buzz Test Visualizer Card -->
+        <LinearLayout
+            android:id="@+id/buzz_test_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_truck_card"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IDM Injector Buzz Test Matrix"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#F8FAFC" />
+
+            <TextView
+                android:id="@+id/buzz_status_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tests IDM 115V firing circuit, UVCH valve cover plugs, and injector solenoids (2.8 - 3.2 Ω)"
+                android:textSize="11sp"
+                android:textColor="#94A3B8"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Cylinders Bank 1 (Pass: 1, 3, 5, 7) & Bank 2 (Driver: 2, 4, 6, 8) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <!-- Bank 1: Cylinders 1, 3, 5, 7 (Passenger Side) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="#090D16"
+                    android:padding="8dp"
+                    android:layout_marginEnd="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BANK 1 (Passenger)"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="#38BDF8"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/cyl_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cyl 1: IDLE (3.0 Ω)"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:id="@+id/cyl_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cyl 3: IDLE (3.0 Ω)"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:id="@+id/cyl_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cyl 5: IDLE (3.0 Ω)"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:id="@+id/cyl_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cyl 7: IDLE (3.0 Ω)"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:padding="3dp" />
+                </LinearLayout>
+
+                <!-- Bank 2: Cylinders 2, 4, 6, 8 (Driver Side) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="#090D16"
+                    android:padding="8dp"
+                    android:layout_marginStart="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BANK 2 (Driver Side)"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="#38BDF8"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/cyl_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cyl 2: IDLE (3.0 Ω)"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:id="@+id/cyl_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cyl 4: IDLE (3.0 Ω)"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:id="@+id/cyl_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cyl 6: IDLE (3.0 Ω)"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:id="@+id/cyl_8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cyl 8: IDLE (3.0 Ω)"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp"
+                        android:padding="3dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Quick 7.3L Field Troubleshooting Decision Tree -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7.3L EMERGENCY FIELD CHECKS (EXPANDABLE)"
+            android:textColor="#94A3B8"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1E293B"
+            android:padding="12dp"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚡ 1. The 'Unplug ICP Sensor' Quick Test:"
+                android:textColor="#38BDF8"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="If the ICP sensor is biased or failed, unplug its 3-pin connector on the driver's side cylinder head. If the truck starts with the ICP unplugged, the sensor is defective (the PCM enters default 725 PSI fallback mode)."
+                android:textColor="#CBD5E1"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚡ 2. The Fuse #30 Fuel Heater Short Trick:"
+                android:textColor="#38BDF8"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="If your 'Wait To Start' light is dead and scanner cannot link to the PCM, the fuel bowl heater shorted out and popped 30A Fuse #30. Unplug the 2-pin fuel heater wire on the back of the fuel bowl, replace Fuse #30, and turn key."
+                android:textColor="#CBD5E1"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚡ 3. HPOP Reservoir Oil Level Inspection:"
+                android:textColor="#38BDF8"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remove the 1/4-inch hex plug on top of the front aluminum HPOP reservoir. Oil level must be within 3/4-inch to 1-inch of the top. If dry, the low pressure LPOP gear pump or anti-drainback check ball is leaking."
+                android:textColor="#CBD5E1"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Export Diagnostics & Back Button -->
+        <Button
+            android:id="@+id/btn_export_diag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Export Diagnostic Report (CSV / Text)"
+            android:textSize="12sp"
+            android:backgroundTint="#059669"
+            android:layout_marginBottom="6dp" />
+
+    </LinearLayout>
+</ScrollView>

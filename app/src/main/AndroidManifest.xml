@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.autosentry.app">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Bluetooth for OBD-II adapters -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -43,6 +42,15 @@
             android:exported="false" />
 
         <activity android:name=".ui.MaintenanceActivity"
+            android:exported="false" />
+
+        <activity android:name=".ui.CrankNoStartActivity"
+            android:exported="false" />
+
+        <activity android:name=".ui.TripsActivity"
+            android:exported="false" />
+
+        <activity android:name=".ui.AIPartsActivity"
             android:exported="false" />
 
     </application>

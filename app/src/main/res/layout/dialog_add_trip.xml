@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#0F172A"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log New Truck Trip"
+            android:textColor="#F8FAFC"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Persist trip metrics into Room DB for fuel, mileage and PID telemetry auditing."
+            android:textColor="#94A3B8"
+            android:textSize="11sp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Trip Name / Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trip Name / Destination"
+            android:textColor="#CBD5E1"
+            android:textSize="11sp" />
+        <EditText
+            android:id="@+id/dialog_trip_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="e.g. Denver to Silverthorne Tow Run"
+            android:textColor="#F8FAFC"
+            android:textColorHint="#64748B"
+            android:textSize="13sp"
+            android:background="@drawable/bg_cluster_card"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Trip Purpose / Duty Cycle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trip Purpose / Duty Load"
+            android:textColor="#CBD5E1"
+            android:textSize="11sp" />
+        <Spinner
+            android:id="@+id/dialog_trip_purpose_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_cluster_card"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Distance & Odometer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Distance (Miles)"
+                    android:textColor="#CBD5E1"
+                    android:textSize="11sp" />
+                <EditText
+                    android:id="@+id/dialog_trip_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="e.g. 145.0"
+                    android:textColor="#F8FAFC"
+                    android:textColorHint="#64748B"
+                    android:textSize="13sp"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/bg_cluster_card"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fuel Used (Gal)"
+                    android:textColor="#CBD5E1"
+                    android:textSize="11sp" />
+                <EditText
+                    android:id="@+id/dialog_trip_fuel"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="e.g. 10.2"
+                    android:textColor="#F8FAFC"
+                    android:textColorHint="#64748B"
+                    android:textSize="13sp"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/bg_cluster_card"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Max Boost & Max EOT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Max Boost (PSI)"
+                    android:textColor="#CBD5E1"
+                    android:textSize="11sp" />
+                <EditText
+                    android:id="@+id/dialog_trip_boost"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="e.g. 24.5"
+                    android:textColor="#F8FAFC"
+                    android:textColorHint="#64748B"
+                    android:textSize="13sp"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/bg_cluster_card"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Max EOT (°F)"
+                    android:textColor="#CBD5E1"
+                    android:textSize="11sp" />
+                <EditText
+                    android:id="@+id/dialog_trip_eot"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="e.g. 202"
+                    android:textColor="#F8FAFC"
+                    android:textColorHint="#64748B"
+                    android:textSize="13sp"
+                    android:inputType="number"
+                    android:background="@drawable/bg_cluster_card"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Route & Driver Notes -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Route, Payload &amp; Telemetry Notes"
+            android:textColor="#CBD5E1"
+            android:textSize="11sp" />
+        <EditText
+            android:id="@+id/dialog_trip_notes"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="e.g. Hauled 30ft gooseneck trailer over pass. EOT/ECT stayed within 8 deg delta."
+            android:textColor="#F8FAFC"
+            android:textColorHint="#64748B"
+            android:textSize="12sp"
+            android:gravity="top|start"
+            android:background="@drawable/bg_cluster_card"
+            android:padding="8dp"
+            android:layout_marginBottom="14dp" />
+
+    </LinearLayout>
+</ScrollView>

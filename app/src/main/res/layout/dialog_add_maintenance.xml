@@ -1,34 +1,363 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="#0F172A">
 
-    <EditText
-        android:id="@+id/edit_maint_title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Service name (e.g., Oil change)" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/edit_interval_km"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Interval (km, 0 to skip)"
-        android:inputType="number" />
+        <TextView
+            android:id="@+id/dialog_add_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log Service or Installed Upgrade"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#F8FAFC" />
 
-    <EditText
-        android:id="@+id/edit_interval_months"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Interval (months, 0 to skip)"
-        android:inputType="number" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Documented maintenance and upgrades directly increase resale valuation &amp; protect against vehicle depreciation."
+            android:textSize="11sp"
+            android:textColor="#94A3B8"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp" />
 
-    <EditText
-        android:id="@+id/edit_maint_notes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Notes (optional)" />
+        <!-- Record Type: Routine Service vs Installed Upgrade -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Record Category Type:"
+            android:textColor="#94A3B8"
+            android:textSize="12sp" />
 
-</LinearLayout>
+        <RadioGroup
+            android:id="@+id/radio_group_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp">
+
+            <RadioButton
+                android:id="@+id/radio_type_upgrade"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="★ Installed Upgrade"
+                android:textColor="#38BDF8"
+                android:textSize="12sp"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/radio_type_service"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🔧 Routine Service"
+                android:textColor="#4ADE80"
+                android:textSize="12sp" />
+        </RadioGroup>
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item / Upgrade Name:"
+            android:textColor="#94A3B8"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/edit_maint_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. KC300x Stage 1 Turbo / Mishimoto Radiator"
+            android:textColor="#F8FAFC"
+            android:textColorHint="#64748B"
+            android:background="#1E293B"
+            android:padding="10dp"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Brand / Part Number -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manufacturer / Brand / Part #:"
+            android:textColor="#94A3B8"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/edit_brand_part"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. KC Turbos / PHP Hydra / Motorcraft"
+            android:textColor="#F8FAFC"
+            android:textColorHint="#64748B"
+            android:background="#1E293B"
+            android:padding="10dp"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Date Serviced / Installed Row -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date Serviced / Installed:"
+            android:textColor="#94A3B8"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/edit_service_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="YYYY-MM-DD"
+                android:textColor="#F8FAFC"
+                android:textColorHint="#64748B"
+                android:background="#1E293B"
+                android:padding="10dp"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btn_pick_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pick Date"
+                android:textSize="11sp"
+                android:backgroundTint="#0284C7"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+
+        <!-- Odometer at service / install -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Odometer Mileage at Installation:"
+            android:textColor="#94A3B8"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/edit_install_mileage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. 164250"
+            android:inputType="number"
+            android:textColor="#F8FAFC"
+            android:textColorHint="#64748B"
+            android:background="#1E293B"
+            android:padding="10dp"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Cost & Depreciation Added Value Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Installed Cost ($):"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edit_cost_val"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="e.g. 1450.00"
+                    android:inputType="numberDecimal"
+                    android:textColor="#F8FAFC"
+                    android:textColorHint="#64748B"
+                    android:background="#1E293B"
+                    android:padding="10dp"
+                    android:textSize="13sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resale Value Added ($):"
+                    android:textColor="#38BDF8"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edit_deprec_value_added"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="e.g. 1100.00"
+                    android:inputType="numberDecimal"
+                    android:textColor="#38BDF8"
+                    android:textColorHint="#64748B"
+                    android:background="#1E293B"
+                    android:padding="10dp"
+                    android:textSize="13sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Warranty & Service Facility -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Warranty / Lifetime Coverage:"
+            android:textColor="#94A3B8"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/edit_warranty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. Lifetime Limited Warranty / 3-Year 36,000 Mi"
+            android:textColor="#F8FAFC"
+            android:textColorHint="#64748B"
+            android:background="#1E293B"
+            android:padding="10dp"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Installed Facility / Mechanic / DIY:"
+            android:textColor="#94A3B8"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/edit_maint_shop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. Diesel Powerhouse Specialists / DIY"
+            android:textColor="#F8FAFC"
+            android:textColorHint="#64748B"
+            android:background="#1E293B"
+            android:padding="10dp"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Optional Interval -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recurring Interval (Miles):"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edit_interval_km"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0 for upgrade"
+                    android:inputType="number"
+                    android:textColor="#F8FAFC"
+                    android:textColorHint="#64748B"
+                    android:background="#1E293B"
+                    android:padding="10dp"
+                    android:textSize="13sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Interval (Months):"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/edit_interval_months"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0 for upgrade"
+                    android:inputType="number"
+                    android:textColor="#F8FAFC"
+                    android:textColorHint="#64748B"
+                    android:background="#1E293B"
+                    android:padding="10dp"
+                    android:textSize="13sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Notes -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Installed Notes / Specs &amp; Dyno Gains:"
+            android:textColor="#94A3B8"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/edit_maint_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. +65 HP, lower EGTs, billet compressor wheel"
+            android:textColor="#F8FAFC"
+            android:textColorHint="#64748B"
+            android:background="#1E293B"
+            android:padding="10dp"
+            android:textSize="13sp"
+            android:lines="2"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp" />
+
+    </LinearLayout>
+</ScrollView>

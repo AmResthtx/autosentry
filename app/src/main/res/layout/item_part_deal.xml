@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_cluster_card"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp">
+
+    <!-- Header: Quality Tier Badge, Symbol & Partner Deal Tag -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/deal_symbol"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:text="🛢️"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:id="@+id/deal_quality_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="★ TIER 1 OEM CERTIFIED"
+            android:textColor="#38BDF8"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:background="#0C4A6E"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:id="@+id/deal_partner_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PARTNER DEAL"
+            android:textColor="#4ADE80"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:background="#064E3B" />
+    </LinearLayout>
+
+    <!-- Part Name -->
+    <TextView
+        android:id="@+id/deal_part_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Motorcraft FL-1995 Heavy Duty Oil Filter (7.3L OEM)"
+        android:textColor="#F8FAFC"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp" />
+
+    <!-- OEM Part # & Fitment Verification -->
+    <TextView
+        android:id="@+id/deal_part_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Part #: Motorcraft FL-1995 • Fitment: 1994.5-2003 7.3L PowerStroke"
+        android:textColor="#94A3B8"
+        android:textSize="11sp"
+        android:layout_marginTop="2dp" />
+
+    <!-- Price, Regular Price, and Savings Banner -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#090D16"
+        android:padding="8dp"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BEST VERIFIED PRICE"
+                android:textColor="#64748B"
+                android:textSize="9sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/deal_best_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$16.99"
+                    android:textColor="#4ADE80"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/deal_regular_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" $24.99"
+                    android:textColor="#64748B"
+                    android:textSize="12sp"
+                    android:layout_marginStart="6dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/deal_savings_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAVE $8.00 (32% OFF)"
+            android:textColor="#F59E0B"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:background="#78350F" />
+    </LinearLayout>
+
+    <!-- Why Quality Matters Section (Crucial for Revenue & Trust) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#1E1B4B"
+        android:padding="8dp"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💎 WHY QUALITY MATTERS ON THIS COMPONENT:"
+            android:textColor="#A5B4FC"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/deal_why_quality"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Low-grade filters collapse under 7.3L oil pressure and allow abrasive soot into injector intensifier pistons, causing $2,400 premature injector failure."
+            android:textColor="#E0E7FF"
+            android:textSize="11sp"
+            android:layout_marginTop="2dp" />
+    </LinearLayout>
+
+    <!-- Partner Coupon Code & Seller Info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/deal_partner_seller"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Seller: Riffraff Diesel • In Stock (Ships in 24h)"
+            android:textColor="#CBD5E1"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/deal_coupon_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Code: AUTOSENTRY15"
+            android:textColor="#FBBF24"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:background="#451A03"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp" />
+    </LinearLayout>
+
+    <!-- Action Buttons: Copy Code & Claim Partner Deal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btn_copy_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Copy Code"
+            android:textSize="11sp"
+            android:backgroundTint="#334155"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btn_claim_deal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.4"
+            android:text="Get Best Deal"
+            android:textSize="11sp"
+            android:backgroundTint="#22C55E"
+            android:layout_marginStart="4dp" />
+    </LinearLayout>
+
+</LinearLayout>
