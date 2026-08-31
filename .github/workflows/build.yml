@@ -28,6 +28,8 @@ jobs:
         with:
           gradle-version: 9.0.0
           cache-read-only: false
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
       - name: Build APK (Release)
         run: ./gradlew :app:assembleRelease --stacktrace --info
         env:
