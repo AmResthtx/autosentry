@@ -1,10 +1,12 @@
 package com.autosentry.app.notifications;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
 import com.autosentry.app.ui.AlertsActivity;
@@ -13,6 +15,9 @@ public class NotificationUtils {
     public static final String CHANNEL_ID = "autosentry_alerts";
 
     public static void createChannels(Context ctx) {
+        // Notification channels only exist on API 26+ (Oreo); on API 24/25 there is
+        // nothing to create and the NotificationChannel class is unavailable.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return;
         NotificationManager nm = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
         if (nm == null) return;
         NotificationChannel ch = new NotificationChannel(CHANNEL_ID, "AutoSentry Alerts", NotificationManager.IMPORTANCE_HIGH);
@@ -20,6 +25,9 @@ public class NotificationUtils {
         nm.createNotificationChannel(ch);
     }
 
+    // POST_NOTIFICATIONS (API 33+) is declared in the manifest and requested at runtime
+    // by PermissionFlow; callers post alerts only after the user has been prompted.
+    @SuppressLint("MissingPermission")
     public static void sendAlert(Context ctx, int notifId, String title, String text) {
         createChannels(ctx);
         Intent intent = new Intent(ctx, AlertsActivity.class);

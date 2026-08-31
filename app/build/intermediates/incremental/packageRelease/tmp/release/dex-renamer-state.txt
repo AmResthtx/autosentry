@@ -1,4 +1,0 @@
-#Sun Aug 30 04:36:17 CDT 2026
-base.0=C\:\\Users\\ellis\\autosentry\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex

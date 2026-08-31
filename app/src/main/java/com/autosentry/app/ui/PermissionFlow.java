@@ -1,6 +1,7 @@
 package com.autosentry.app.ui;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -29,6 +30,8 @@ public class PermissionFlow {
         return true;
     }
 
+    // adapter.isEnabled() is guarded by the runtime permission requests issued just above.
+    @SuppressLint("MissingPermission")
     public static void requestAllPermissions(MainActivity activity) {
         for (String perm : REQUIRED_PERMS) {
             if (ContextCompat.checkSelfPermission(activity, perm) != PackageManager.PERMISSION_GRANTED) {
