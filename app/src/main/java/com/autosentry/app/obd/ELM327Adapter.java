@@ -1,5 +1,6 @@
 package com.autosentry.app.obd;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -26,6 +27,9 @@ public class ELM327Adapter {
 
     public ELM327Adapter() {}
 
+    // Bluetooth permissions (BLUETOOTH_CONNECT/SCAN) are declared in the manifest and
+    // requested at runtime by PermissionFlow before any adapter connection is attempted.
+    @SuppressLint("MissingPermission")
     public boolean connect() throws IOException, InterruptedException {
         if (connected) disconnect();
         this.adapterAddress = adapterAddress;

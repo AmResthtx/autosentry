@@ -1,5 +1,6 @@
 package com.autosentry.app.notifications;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -20,6 +21,9 @@ public class NotificationUtils {
         nm.createNotificationChannel(ch);
     }
 
+    // POST_NOTIFICATIONS (API 33+) is declared in the manifest and requested at runtime
+    // by PermissionFlow; callers post alerts only after the user has been prompted.
+    @SuppressLint("MissingPermission")
     public static void sendAlert(Context ctx, int notifId, String title, String text) {
         createChannels(ctx);
         Intent intent = new Intent(ctx, AlertsActivity.class);
