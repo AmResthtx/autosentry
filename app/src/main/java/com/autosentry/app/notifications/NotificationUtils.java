@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
 import com.autosentry.app.ui.AlertsActivity;
@@ -14,6 +15,9 @@ public class NotificationUtils {
     public static final String CHANNEL_ID = "autosentry_alerts";
 
     public static void createChannels(Context ctx) {
+        // Notification channels only exist on API 26+ (Oreo); on API 24/25 there is
+        // nothing to create and the NotificationChannel class is unavailable.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return;
         NotificationManager nm = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
         if (nm == null) return;
         NotificationChannel ch = new NotificationChannel(CHANNEL_ID, "AutoSentry Alerts", NotificationManager.IMPORTANCE_HIGH);
